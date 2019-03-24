@@ -1,0 +1,96 @@
+
+query links {
+    allLinks {
+        url
+        description
+    }
+}
+
+query links {
+    allLinks {
+        description
+    }
+}
+
+mutation createLink {
+    createLink(url: "http://google.pl", description: "Google") {
+        url description
+    }
+}
+
+mutation createUser {
+    createUser(
+        name: "jan",
+        authProvider: {
+            email: "jan@wp.pl",
+            password: "123"
+        }) {
+        id,
+        name
+    }
+}
+
+mutation signIn {
+    signinUser(auth: {email: "admin@wp.pl", password: "123"}) {
+        token
+        user {
+            id
+            name
+        }
+    }
+}
+
+query linksWithUsers {
+    allLinks {
+        url
+        postedBy {
+            name
+        }
+    }
+}
+
+fragment LinkInfo on Link {
+    id
+    url
+    description
+}
+query linksWithFields {
+    allLinks {
+        ...LinkInfo
+    }
+}
+
+mutation vote {
+    createVote(linkId: "1", userId: "1") {
+        createdAt
+        link {
+            url
+        }
+        user {
+            name
+        }
+    }
+}
+
+query findLinks {
+    allLinks(filter: {description_contains: "back", url_contains: "cool"}) {
+        url
+        description
+    }
+}
+
+query findLinks2 {
+    allLinks(filter: {url_contains: "cool"}) {
+        url
+        description
+    }
+}
+
+
+query linksPage {
+    allLinks(skip: 1, first: 1) {
+        description
+        url
+    }
+}
+
