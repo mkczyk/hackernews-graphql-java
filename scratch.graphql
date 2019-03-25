@@ -21,7 +21,7 @@ mutation createLink {
 mutation createUser {
     createUser(
         name: "jan",
-        authProvider: {
+        auth: {
             email: "jan@wp.pl",
             password: "123"
         }) {
@@ -94,3 +94,11 @@ query linksPage {
     }
 }
 
+
+
+
+
+
+
+
+}

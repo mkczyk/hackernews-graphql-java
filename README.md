@@ -12,7 +12,7 @@ Code basis on How to GraphQL [graphql-java Tutorial](https://www.howtographql.co
 - Subscriptions (not supported in graphql-java)
 - Filtering
 - Pagination
-- Alternative approaches to schema development (not yet)
+- Alternative approaches to schema development (GraphQL SPQR)
 
 ### Running
 ```
@@ -28,6 +28,8 @@ is in [Mutations](https://www.howtographql.com/graphql-java/3-mutations/) part)
 * Files for [JS GraphQL](https://plugins.jetbrains.com/plugin/8097-js-graphql) IntelliJ plugin (version 2, 
 currently [beta](https://github.com/jimkyndemeyer/js-graphql-intellij-plugin/releases/tag/2.0.0-beta-1)): 
 `.graphqlconfig` and `scratch.graphql` 
+* Implemented all with GraphQL SPQR (not only mentioned in "Alternative approaches to schema development" tutorial's part)
+* File `schema.graphqls` preserved only due to JS GraphQL plugin's schema validation. Try to use [Insomnia](https://insomnia.rest/) client.
 
 ### Working with Mongo
 

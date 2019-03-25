@@ -1,12 +1,14 @@
 package com.howtographql.hackernews.graphql.resolver;
 
-import com.coxautodev.graphql.tools.GraphQLResolver;
 import com.howtographql.hackernews.graphql.type.SigninPayload;
 import com.howtographql.hackernews.graphql.type.User;
+import io.leangen.graphql.annotations.GraphQLContext;
+import io.leangen.graphql.annotations.GraphQLQuery;
 
-public class SigninResolver implements GraphQLResolver<SigninPayload> {
+public class SigninResolver {
 
-    public User user(SigninPayload payload) {
+    @GraphQLQuery
+    public User user(@GraphQLContext SigninPayload payload) {
         return payload.getUser();
     }
 }

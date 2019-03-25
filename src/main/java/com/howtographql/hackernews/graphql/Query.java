@@ -1,13 +1,14 @@
 package com.howtographql.hackernews.graphql;
 
-import com.coxautodev.graphql.tools.GraphQLRootResolver;
 import com.howtographql.hackernews.dao.LinkRepository;
 import com.howtographql.hackernews.graphql.input.LinkFilter;
 import com.howtographql.hackernews.graphql.type.Link;
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLQuery;
 
 import java.util.List;
 
-public class Query implements GraphQLRootResolver {
+public class Query {
     
     private final LinkRepository linkRepository;
 
@@ -15,7 +16,10 @@ public class Query implements GraphQLRootResolver {
         this.linkRepository = linkRepository;
     }
 
-    public List<Link> allLinks(LinkFilter filter, Number skip, Number first) {
+    @GraphQLQuery
+    public List<Link> allLinks(LinkFilter filter,
+                               @GraphQLArgument(name = "skip", defaultValue = "0") Number skip,
+                               @GraphQLArgument(name = "first", defaultValue = "0") Number first) {
         return linkRepository.getAllLinks(filter, skip.intValue(), first.intValue());
     }
 }

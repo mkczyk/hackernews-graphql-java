@@ -22,11 +22,6 @@
     </dependency>
     <dependency>
       <groupId>com.graphql-java</groupId>
-      <artifactId>graphql-java-tools</artifactId>
-      <version>3.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.graphql-java</groupId>
       <artifactId>graphql-java-servlet</artifactId>
       <version>4.0.0</version>
     </dependency>
@@ -40,6 +35,11 @@
       <groupId>org.mongodb</groupId>
       <artifactId>mongodb-driver</artifactId>
       <version>3.4.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.leangen.graphql</groupId>
+      <artifactId>spqr</artifactId>
+      <version>0.9.4</version>
     </dependency>
   </dependencies>
   <build>
@@ -65,6 +65,17 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>3.1.0</version>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.1</version>
+        <configuration>
+          <compilerArgs>
+            <arg>-parameters</arg>
+          </compilerArgs>
+        </configuration>
+    </plugin>
     </plugins>
   </build>
 </project>
