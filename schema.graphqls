@@ -42,7 +42,7 @@ type Query {
 
 type Mutation {
     createLink(url: String!, description: String!): Link
-    createUser(name: String!, authProvider: AuthData!): User
+    createUser(name: String!, auth: AuthData!): User
     signinUser(auth: AuthData): SigninPayload
     createVote(linkId: ID, userId: ID): Vote
 }

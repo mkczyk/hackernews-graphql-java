@@ -14,7 +14,8 @@ query links {
 
 mutation createLink {
     createLink(url: "http://google.pl", description: "Google") {
-        url description
+        url
+        description
     }
 }
 
@@ -92,13 +93,4 @@ query linksPage {
         description
         url
     }
-}
-
-
-
-
-
-
-
-
 }
