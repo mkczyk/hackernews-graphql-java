@@ -1,9 +1,9 @@
 package com.howtographql.hackernews.dao.impl;
 
 import com.howtographql.hackernews.dao.VoteRepository;
-import com.howtographql.hackernews.graphql.Scalars;
 import com.howtographql.hackernews.graphql.type.Vote;
 import com.mongodb.client.MongoCollection;
+import io.leangen.graphql.util.Scalars;
 import org.bson.Document;
 
 import java.time.ZonedDateTime;
@@ -13,7 +13,7 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 
 public class VoteRepositoryMongo implements VoteRepository {
-    
+
     private final MongoCollection<Document> votes;
 
     public VoteRepositoryMongo(MongoCollection<Document> votes) {
@@ -43,7 +43,7 @@ public class VoteRepositoryMongo implements VoteRepository {
         Document doc = new Document();
         doc.append("userId", vote.getUserId());
         doc.append("linkId", vote.getLinkId());
-        doc.append("createdAt", Scalars.dateTime.getCoercing().serialize(vote.getCreatedAt()));
+        doc.append("createdAt", Scalars.GraphQLLocalDateTime.getCoercing().serialize(vote.getCreatedAt()));
         votes.insertOne(doc);
         return new Vote(
                 doc.get("_id").toString(),
@@ -51,7 +51,7 @@ public class VoteRepositoryMongo implements VoteRepository {
                 vote.getUserId(),
                 vote.getLinkId());
     }
-    
+
     private Vote vote(Document doc) {
         return new Vote(
                 doc.get("_id").toString(),
